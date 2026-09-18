@@ -4,7 +4,7 @@ function Calculator() {
   const [expression, setExpression] = useState("");
 
   return (
-    <div className="calculator">
+    <div className="Calculator">
        <div className="display">
         {expression}
       </div>
