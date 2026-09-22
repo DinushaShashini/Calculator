@@ -101,7 +101,21 @@ function Calculator() {
       {isHistoryOpen && (
         <aside className="history-panel">
           <button className="history-close" onClick={() => setIsHistoryOpen(false)}>×</button>
-          <h2>Calculation history</h2>
+          <div className="history-heading">
+            <h2>Calculation history</h2>
+            {history.length > 0 && (
+              <button
+                className="history-clear"
+                onClick={() => {
+                  setHistory([]);
+                  setExpression("");
+                  setResult("");
+                }}
+              >
+                Clear
+              </button>
+            )}
+          </div>
           {history.length === 0 ? (
             <p>No calculations yet</p>
           ) : (
