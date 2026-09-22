@@ -51,7 +51,15 @@ function Calculator() {
     if (!expression) return;
 
     try {
-      const answer = evaluate(expression);
+      const percentageExpression = expression.replace(
+        /^(\d+(?:\.\d+)?)([+-])(\d+(?:\.\d+)?)%$/,
+        "($1$2($1*$3/100))"
+      );
+      const normalizedExpression = percentageExpression.replace(
+        /(\d+(?:\.\d+)?)%/g,
+        "($1/100)"
+      );
+      const answer = evaluate(normalizedExpression);
       if (!Number.isFinite(answer)) throw new Error("Invalid result");
 
       const formatted = Number.isInteger(answer)
@@ -78,7 +86,7 @@ function Calculator() {
       setResult("");
     }
     if (value === "%") {
-      setExpression((current) => current.replace(/(\d+\.?\d*)$/, (number) => String(Number(number) / 100)));
+      setExpression((current) => current.replace(/(\d+\.?\d*)%?$/, "$1%"));
       setResult("");
     }
     if (value === "±") {
