@@ -308,7 +308,9 @@
     width: min(72vw, 520px);
   }
 }
+
 /*laptop layout*/
+
 @media (min-width: 1025px) {
   .Calculator {
     width: min(38vw, 520px);

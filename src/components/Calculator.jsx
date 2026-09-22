@@ -1,12 +1,16 @@
-﻿import { useState } from "react";
+﻿//import
+import { useState } from "react";
 import { evaluate } from "mathjs";
 
 function Calculator() {
+    //calculator state
   const [expression, setExpression] = useState("");
   const [result, setResult] = useState("");
   const [history, setHistory] = useState([]);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
 
+
+  //handle number and operator
   const handleNumber = (value) => {
     setExpression((prev) => prev + value);
     setResult("");
@@ -81,7 +85,7 @@ function Calculator() {
       setResult("Invalid expression");
     }
   };
-
+// handle history
   const handleHistoryClick = (item) => {
     setExpression(item.expression);
     setResult(item.result);
